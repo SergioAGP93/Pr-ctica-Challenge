@@ -114,7 +114,15 @@ function palabraMasLarga(array) {
   // palabraMasLarga(['hola esto string', 'frase con palabra']) debe devolver 'palabra'
 
   // Tu código aca:
-
+  NumLetras = 0;
+  MasLarga = '';
+  for(i=0;i<array.length;i++){
+    if(NumLetras < array[i].length){
+      NumLetras = array[i].length;
+      MasLarga = array[i];
+    }
+  }
+  return MasLarga;
 }
 
 function crearClaseEmprendedor() {
