@@ -12,15 +12,28 @@ function menorMayor(numeros) {
   // y 15 es el número más grande (mayor) dentro del arreglo [4, 6, 1, 7, 15]
 
   // Tu código aca:
+  var mayor = numeros[0];
+  var menor = numeros[0];
 
-}
+  for (i=0;i<numeros.length;i++){
+    
+    if(numeros[i]<menor){
+      menor = numeros[i]
+    } else if(
+      numeros[i]>mayor){
+        mayor = numeros[i];
+      }
+    }
+    return [menor,mayor];
+  }
+
 
 function cuantosOnline(usuarios) {
   // La funcion llamada "cuantosOnline" recibe como argumento un objeto 'usuarios', cada property de ese objeto es un objeto
   // cada usuario tiene una property 'online' que es un booleano.
   // deberia devolver la cantidad de usuarios con la property online igual a true.
   // Por ej:
-  // let usuarios = {
+   // let usuarios = {
   //     toni: {
   //         edad: 33,
   //         online: true
@@ -36,13 +49,21 @@ function cuantosOnline(usuarios) {
   //     agus: {
   //         edad: 24,
   //         online: false
-  //     }
+  //     } 
   // }; 
   // cuantosOnline(usuarios) devuelve 2
   // Tip: Podes usar el metodo for...in
 
   // Tu código aca:
-
+  var useronline = 0;
+  for(let user in usuarios){
+    
+    if(usuarios[user].online == true){
+      
+      useronline++;
+    }
+  }
+return useronline;
 }
 
 function divisores(numero) {
@@ -55,7 +76,16 @@ function divisores(numero) {
   // divisores(11) devuelve 'Es primo'
 
    // Tu código aca:
-
+   var divisores = [];
+  for(i=2;i<numero;i++){
+    if(numero % i == 0){
+      divisores.push(i);
+    }
+  }
+  if (divisores.length ==0){
+    return 'Es primo';
+  }
+  return divisores;
 }
 
 function actividadesEnComun(persona1, persona2) {
@@ -66,7 +96,15 @@ function actividadesEnComun(persona1, persona2) {
   // actividadesEnComun(persona1, persona2) => ['comer', 'dormir']
   // Tip: podes usar ciclos for anidados.
   // Tu código aca:
-
+  var ActComun = [];
+  for (i=0;i<persona1.length;i++){
+    for(j=0;j<persona2.length;j++){
+      if(persona1[i]==persona2[j]){
+        ActComun.push(persona1[i]);
+      }
+    }
+  }
+  return ActComun;
 }
 
 function palabraMasLarga(array) {
