@@ -114,14 +114,15 @@ function palabraMasLarga(array) {
   // palabraMasLarga(['hola esto string', 'frase con palabra']) debe devolver 'palabra'
 
   // Tu código aca:
-  NumLetras = 0;
-  MasLarga = '';
-  for(i=0;i<array.length;i++){
-    if(NumLetras < array[i].length){
-      NumLetras = array[i].length;
-      MasLarga = array[i];
+    MasLarga = '';
+array.forEach(function(element){
+  var newArray = element.split(' ');
+  for (i=0;i<newArray.length;i++){
+    if (newArray[i].length > MasLarga.length){
+      MasLarga = newArray[i];
     }
   }
+})
   return MasLarga;
 }
 
@@ -132,6 +133,10 @@ function crearClaseEmprendedor() {
           // Inicializar las propiedades del emprendedor con los valores recibidos como argumento
 
           // Tu código aca:
+         this.nombre = nombre;
+         this.apellido = apellido;
+         this.libros = libros;
+         this.mascotas = mascotas; 
 
       }
 
@@ -140,7 +145,7 @@ function crearClaseEmprendedor() {
         // no debe retornar nada.
 
         // Tu código aca:
-
+        this.mascotas.push(mascota);
       }
 
       getMascotas() {
@@ -150,7 +155,7 @@ function crearClaseEmprendedor() {
           // emprendedor.getMascotas() debería devolver 2
 
           // Tu código aca:
-
+          return this.mascotas.length;
       }
 
       addBook(book, autor) {
@@ -159,7 +164,8 @@ function crearClaseEmprendedor() {
           // No debe retornar nada.
 
           // Tu código aca:
-
+          var nuevolibro = {nombre: book, autor: autor};
+          this.libros.push(nuevolibro);
       }
 
       getBooks() {
@@ -169,7 +175,11 @@ function crearClaseEmprendedor() {
           // emprendedor.getBooks() debería devolver ['El señor de las moscas', 'Fundacion']
 
           // Tu código aca:
-
+          var verlibros = [];
+          for (var i=0;i<this.libros.length;i++){
+            verlibros.push(this.libros[i].nombre)
+          }
+          return verlibros;
       }
 
       getFullName() {
@@ -179,10 +189,9 @@ function crearClaseEmprendedor() {
           // emprendedor.getFullName() deberia devolver 'Elon Musk'
 
           // Tu código aca:
-
+          return this.nombre + ' ' + this.apellido;
       }
   }
-
   return Emprendedor;
 }
 
@@ -198,6 +207,13 @@ function repetirCaracteres() {
   // 'hola'.repeatCharacters() devuelve "hhoollaa"
 
   // Tu código aca:
+String.prototype.repeatCharacters = function(){
+  var newstring = '';
+  for (var i=0;i<this.length;i++){
+    newstring = newstring + this[i] + this[i];
+  }
+  return newstring;
+}
 
 }
 
